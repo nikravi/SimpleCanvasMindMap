@@ -1,0 +1,94 @@
+body{
+	padding: 0;
+    margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.mnBaseContainer * {
+    padding: 0;
+    margin: 0;
+    font-size: 1em;
+}
+
+.mnBaseContainer {
+    position: relative;
+    width: 1100px;
+    height: 500px;
+    border: 1px solid #1D93FF;
+    margin: 10px auto;
+}
+.mnBaseChildren{
+	z-index: 5;
+	font-size: .85em;
+}
+.flyObj {
+    position: absolute;
+}
+
+.mnRoot {
+    padding: 5px;
+    border: 3px solid #D1A3AC;
+    background-color: #a60;
+	z-index: 10;
+}
+
+.rootLabel {
+    color: #ffa;
+    font-size: 120%;
+    line-height: 125%;
+    font-weight: bold;
+    font-style: normal;
+    width: 169px;
+    height: 20px;
+    text-align: center;
+}
+.firstLevelNode .labelTitle{
+	border: 2px solid #E3C53F;
+    background-color: #ECD778;
+	color: #777;
+	padding: 8px 5px;
+	font-weight: 800;
+}
+.labelTitle{
+	color: #333;
+	margin: 3px 5px;
+	padding: 2px;
+	background-color: #fe7;
+}
+.mnContainer {
+    background: transparent;
+}
+.mnLabel{
+	white-space: nowrap;
+}
+.mnOpenerIcon {
+    cursor: pointer;
+    height: 11px;
+    margin: 0px;
+    overflow: hidden;
+    position: absolute;
+    width: 11px;
+    z-index: 100;
+	font-size: 0;
+	line-height:0;
+}
+.mnMinus{
+	background: transparent url(img/icons.gif) no-repeat 0 0;
+}
+.openerMinusMouseDown{
+	background-position: 0 -60px;
+}
+.openerMinusHover{
+	background-position: 0 -30px;
+}
+.mnPlus{
+	background: transparent url(img/icons.gif) no-repeat -11px 0;
+}
+.openerPlusMouseDown{
+	background-position: -11px -60px;
+}
+.openerPlusHover{
+	background-position: -11px -30px;
+}
+.bgCanvas{
+	z-index: 1;
+}

@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>My map</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script type="text/javascript" src="scripts/jquery-1.2.6.min.js"></script>
+		
+		<!--[if lt IE 9]><script type="text/javascript" src="scripts/excanvas.js"></script><![endif]-->
+		<script type="text/javascript" src="scripts/menuNodes.js"></script>
+		
+		
+	</head>
+	<body>
+		
+		<!-- 
+		
+		_elements:
+			mnContainer = div which contains label, opener and mnChildren. It is a "node".
+			label = div with class mnLabel.
+			opener = div with class mnOpenerIcon, additionally can have css classes mnMinus or mnPlus.
+			mnChildren = div with class mnChildren - contains other nodes as children.
+			canvas = every node has 2 canvas objects - one named RootCanvas - a line between root node and first child.
+				other named ContCanvas - used for drawing lines for tree nodes.
+				
+			__id's
+			mnContainer has id="mnBaseChildren_100"
+				it's RootCanvas must have id="cnRoot100" and contCanvas id="cnCont100"
+			
+			__positioning
+			position is given for base child node only. Algorithm calculates all child coordinates acording to 
+				their dimensions.
+		
+		_Following classes are used in js and in css. do not delete from html. 
+		
+		flyObj - gives position absolute to elements.
+		mnRoot - class for identifying root node, used in js
+		mnBaseChildren - class for identifying base childs , used in js
+		mnOpenerIcon - class for identifying opener (minus/ plus)
+		mnChildren - class for identifying children elements on given node, used in js.
+		
+		
+		_For styling can be added classes to labels
+			or childs elements in label on any level.
+		
+		firstLevelNode - class used only in css for styling.
+		
+		-->
+	<div class="mnBaseContainer" id="mnBaseContaiener">
+		<!-- root node -->
+		<div class="flyObj mnRoot" style="top: 220px; left: 500px;"
+			id="mnRoot">
+			<div class="rootLabel">Main node</div>
+		</div>
+		<!-- right -->
+		<div class="flyObj mnBaseChildren mnContainer" style="top: 50px; left: 680px;"
+			id="mnBaseChildren_100">
+			<div class="flyObj mnLabel firstLevelNode">
+				<div class="labelTitle">Services</div></div>
+			<div class="flyObj mnOpenerIcon mnMinus">&nbsp;</div>
+			<div class="flyObj mnChildren">
+				<!-- II child-->
+				<div class="flyObj mnContainer">
+					<div class="flyObj mnLabel" >
+						<div class="labelTitle">Manufacturing</div></div>
+					<div class="flyObj mnOpenerIcon mnMinus">&nbsp;</div>
+					<div class="flyObj mnChildren">&nbsp;</div>
+				</div>
+				<div class="flyObj mnContainer">
+					<div class="flyObj mnLabel" >
+						<div class="labelTitle">Modeling</div></div>
+					<div class="flyObj mnOpenerIcon mnPlus">&nbsp;</div>
+					<div class="flyObj mnChildren">
+						<div class="flyObj mnContainer">
+							<div class="flyObj mnLabel" >
+								<div class="labelTitle">Main modeling</div></div>
+							<div class="flyObj mnOpenerIcon mnMinus">&nbsp;</div>
+							<div class="flyObj mnChildren">&nbsp;</div>
+						</div>
+						<div class="flyObj mnContainer">
+							<div class="flyObj mnLabel" >
+								<div class="labelTitle">Alfa modeling</div></div>
+							<div class="flyObj mnOpenerIcon mnMinus">&nbsp;</div>
+							<div class="flyObj mnChildren">&nbsp;</div>
+						</div>
+						<div class="flyObj mnContainer">
+							<div class="flyObj mnLabel" >
+								<div class="labelTitle">Beta modeling</div></div>
+							<div class="flyObj mnOpenerIcon mnMinus">&nbsp;</div>
+							<div class="flyObj mnChildren">
+								<div class="flyObj mnContainer">
+									<div class="flyObj mnLabel" >
+										<div class="labelTitle">Thin tablets</div></div>
+									<div class="flyObj mnOpenerIcon mnMinus">&nbsp;</div>
+									<div class="flyObj mnChildren">&nbsp;</div>
+								</div>
+								<div class="flyObj mnContainer">
+									<div class="flyObj mnLabel" >
+										<div class="labelTitle">Mini devices</div></div>
+									<div class="flyObj mnOpenerIcon mnMinus">&nbsp;</div>
+									<div class="flyObj mnChildren">&nbsp;</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="flyObj mnContainer">
+					<div class="flyObj mnLabel" >
+						<div class="labelTitle">Projects</div></div>
+					<div class="flyObj mnOpenerIcon mnMinus">&nbsp;</div>
+					<div class="flyObj mnChildren">&nbsp;</div>
+				</div>
+			</div>
+		</div>
+		<canvas class="flyObj bgCanvas" id="cnCont100" ></canvas>
+		<canvas class="flyObj bgCanvas" id="cnRoot100" ></canvas>
+		<div class="flyObj mnBaseChildren mnContainer" style="top: 250px; left: 780px;"
+			id="mnBaseChildren_101">
+			<div class="flyObj mnLabel firstLevelNode">
+				<div class="labelTitle">Offerings</div>
+			</div>
+			<div class="flyObj mnOpenerIcon mnMinus">&nbsp;</div>
+			<div class="flyObj mnChildren">
+				<div class="flyObj mnContainer">
+					<div class="flyObj mnLabel" >
+						<div class="labelTitle">Analyzing</div></div>
+					<div class="flyObj mnOpenerIcon mnMinus">&nbsp;</div>
+					<div class="flyObj mnChildren">&nbsp;</div>
+				</div>
+				<div class="flyObj mnContainer">
+					<div class="flyObj mnLabel" >
+						<div class="labelTitle">Optimization</div></div>
+					<div class="flyObj mnOpenerIcon mnMinus">&nbsp;</div>
+					<div class="flyObj mnChildren">&nbsp;</div>
+				</div>
+				<div class="flyObj mnContainer">
+					<div class="flyObj mnLabel" >
+						<div class="labelTitle">Refactoring</div></div>
+					<div class="flyObj mnOpenerIcon mnMinus">&nbsp;</div>
+					<div class="flyObj mnChildren">&nbsp;</div>
+				</div>
+			</div>
+		</div>
+		<canvas class="flyObj bgCanvas"	id="cnCont101" ></canvas>
+		<canvas class="flyObj bgCanvas" id="cnRoot101" ></canvas>
+		<div class="flyObj mnBaseChildren mnContainer" style="top: 350px; left: 750px;"
+			id="mnBaseChildren_102">
+			<div class="flyObj mnLabel firstLevelNode" >
+				<div class="labelTitle">Sales</div></div>
+			<div class="flyObj mnOpenerIcon mnMinus" >&nbsp;</div>
+			<div class="flyObj mnChildren">
+				<div class="flyObj mnContainer">
+					<div class="flyObj mnLabel" >
+						<div class="labelTitle">Summer deals</div></div>
+					<div class="flyObj mnOpenerIcon mnMinus">&nbsp;</div>
+					<div class="flyObj mnChildren">&nbsp;</div>
+				</div>
+			</div>
+		</div>
+		<canvas class="flyObj bgCanvas" id="cnCont102" ></canvas>
+		<canvas class="flyObj bgCanvas" id="cnRoot102" ></canvas>
+		<!-- left -->
+		<div class="flyObj mnBaseChildren mnContainer" style="top: 60px; left: 200px;"
+			id="mnBaseChildren_103">
+			<div class="flyObj mnLabel firstLevelNode" >
+				<div class="labelTitle">Special offerings</div></div>
+			<div class="flyObj mnOpenerIcon mnMinus" >&nbsp;</div>
+			<div class="flyObj mnChildren">
+				<div class="flyObj mnContainer">
+					<div class="flyObj mnLabel" >
+						<div class="labelTitle">Promotions</div></div>
+					<div class="flyObj mnOpenerIcon mnMinus">&nbsp;</div>
+					<div class="flyObj mnChildren">&nbsp;</div>
+				</div>
+				<div class="flyObj mnContainer">
+					<div class="flyObj mnLabel" >
+						<div class="labelTitle">Nice things to have</div></div>
+					<div class="flyObj mnOpenerIcon mnMinus">&nbsp;</div>
+					<div class="flyObj mnChildren">&nbsp;</div>
+				</div>
+				<div class="flyObj mnContainer">
+					<div class="flyObj mnLabel" >
+						<div class="labelTitle">SK</div></div>
+					<div class="flyObj mnOpenerIcon mnMinus">&nbsp;</div>
+					<div class="flyObj mnChildren">&nbsp;</div>
+				</div>
+				<div class="flyObj mnContainer">
+					<div class="flyObj mnLabel" >
+						<div class="labelTitle">Gift cards</div></div>
+					<div class="flyObj mnOpenerIcon mnMinus">&nbsp;</div>
+					<div class="flyObj mnChildren">
+						<div class="flyObj mnContainer">
+							<div class="flyObj mnLabel" >
+								<div class="labelTitle">Exclusive</div></div>
+							<div class="flyObj mnOpenerIcon mnMinus">&nbsp;</div>
+							<div class="flyObj mnChildren">&nbsp;</div>
+						</div>
+						<div class="flyObj mnContainer">
+							<div class="flyObj mnLabel" >
+								<div class="labelTitle">VIP</div></div>
+							<div class="flyObj mnOpenerIcon mnMinus">&nbsp;</div>
+							<div class="flyObj mnChildren">&nbsp;</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<canvas class="flyObj bgCanvas" id="cnCont103" ></canvas>
+		<canvas class="flyObj bgCanvas"	id="cnRoot103" ></canvas>
+		<div class="flyObj mnBaseChildren mnContainer" style="top: 260px; left: 110px;"
+			id="mnBaseChildren_104">
+			<div class="flyObj mnLabel firstLevelNode" >
+				<div class="labelTitle">Additional offerings</div></div>
+			<div class="flyObj mnOpenerIcon mnPlus">&nbsp;</div>
+			<div class="flyObj mnChildren">
+				<div class="flyObj mnContainer">
+					<div class="flyObj mnLabel" >
+						<div class="labelTitle">Checkes</div></div>
+					<div class="flyObj mnOpenerIcon mnMinus">&nbsp;</div>
+					<div class="flyObj mnChildren">&nbsp;</div>
+				</div>
+				<div class="flyObj mnContainer">
+					<div class="flyObj mnLabel" >
+						<div class="labelTitle">To not forget</div></div>
+					<div class="flyObj mnOpenerIcon mnMinus">&nbsp;</div>
+					<div class="flyObj mnChildren">&nbsp;</div>
+				</div>
+			</div>
+		</div>
+		<canvas class="flyObj bgCanvas" id="cnCont104" ></canvas>
+		<canvas class="flyObj bgCanvas" id="cnRoot104" ></canvas>
+		<div class="flyObj mnBaseChildren mnContainer" style="top: 380px; left:250px;"
+			id="mnBaseChildren_105">
+			<div class="flyObj mnLabel firstLevelNode">
+				<div class="labelTitle">Contact us</div></div>
+			<div class="flyObj mnOpenerIcon mnMinus" >&nbsp;</div>
+			<div class="flyObj mnChildren">&nbsp;</div>
+		</div>
+		<canvas class="flyObj"
+			id="cnCont105" ></canvas>
+		<canvas class="flyObj"
+			id="cnRoot105" ></canvas>
+    </div>
+
+	</body>
+</html>
