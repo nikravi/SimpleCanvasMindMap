@@ -1,5 +1,5 @@
 Simple Canvas Mind Map
-documentation on http://learncreategive.org/documentation/mind-maps/
+documentation on http://learncreategive.org/documentation/simple-canvas-mind-map/
 
 Creates a mind map from a given html. 
 For now it is static (user can not add new nodes yet).
