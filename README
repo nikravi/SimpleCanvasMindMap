@@ -1,0 +1,6 @@
+Simple Canvas Mind Map
+documentation on http://learncreategive.org/documentation/mind-maps/
+
+Creates a mind map from a given html. 
+For now it is static (user can not add new nodes yet).
+Nodes can be collapsed/expended.
